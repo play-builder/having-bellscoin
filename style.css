@@ -31,7 +31,6 @@
     bottom: 0;
     opacity: 0;
   }
-
   100% {
     bottom: 105%;
     opacity: 1;
@@ -58,23 +57,24 @@
   position: absolute;
   transform: translateY(-50%);
   color: #fff;
+  text-align: center; /* Center align content on mobile */
 }
 
 .content p {
-  font-size: 3em; /* Bellscoin Epoch 4 Countdown 크기를 3배로 증가 */
+  font-size: 3em;
 }
 
 .content h1 {
   font-size: 44px;
   font-weight: 600;
-  color: #000; /* We are heading to 텍스트를 검은색으로 변경 */
+  color: #000;
 }
 
 .content button {
   display: flex;
   align-items: center;
   cursor: pointer;
-  background: #000; /* 버튼 배경을 검은색으로 설정 */
+  background: #000;
   border: 2px solid;
   outline: none;
   padding: 12px 25px;
@@ -91,20 +91,19 @@
     yellow,
     orange,
     red
-  ); /* 무지개 색상 테두리 */
-
-  animation: rainbowBorder 5s linear infinite; /* 테두리 애니메이션 추가 */
+  );
+  animation: rainbowBorder 5s linear infinite;
 }
 
 .content button img {
-  width: 25px; /* 기존 15px에서 20px로 크기 조정 */
-  margin-left: 15px; /* 텍스트와 이미지 사이의 간격 조정 */
+  width: 25px;
+  margin-left: 15px;
 }
 
 .content button span {
-  color: #fff; /* Explore Bellscoin 텍스트를 벨스코인 컬러로 설정 */
+  color: #fff;
   margin-right: 10px;
-  font-size: 1.5em; /* 텍스트 크기를 1.5배로 증가 */
+  font-size: 1.5em;
 }
 
 .content button:hover span {
@@ -123,19 +122,19 @@
 }
 
 .days {
-  color: #ffd700; /* Gold */
+  color: #ffd700;
 }
 
 .hours {
-  color: #ff6347; /* Tomato (a shade of red) */
+  color: #ff6347;
 }
 
 .minutes {
-  color: #800080; /* Lime Green */
+  color: #800080;
 }
 
 .seconds {
-  color: #1e90ff; /* Dodger Blue */
+  color: #1e90ff;
 }
 
 @keyframes colorChange {
@@ -148,7 +147,7 @@
 }
 
 .halving-countdown {
-  font-size: 4em; /* 텍스트 크기 조정 */
+  font-size: 4em;
   font-weight: bold;
   background: linear-gradient(
     90deg,
@@ -200,5 +199,65 @@
       orange,
       red
     );
+  }
+}
+
+/* 모바일 장치 대응 */
+@media (max-width: 768px) {
+  .launch-date div p {
+    font-size: 40px; /* 타이머 숫자 크기 축소 */
+  }
+
+  .launch-date div {
+    flex-basis: 60px; /* 타이머 칸의 크기 축소 */
+  }
+
+  .content h1 {
+    font-size: 28px; /* 타이틀 크기 축소 */
+  }
+
+  .content button {
+    flex-direction: column; /* 버튼 내부 요소를 세로로 배치 */
+    padding: 10px 20px;
+  }
+
+  .content button img {
+    margin-left: 0;
+    margin-top: 10px; /* 이미지를 텍스트 아래로 배치 */
+  }
+
+  .rocket {
+    width: 150px; /* 로켓 이미지 크기 축소 */
+    right: 5%;
+  }
+
+  .halving-countdown {
+    font-size: 2em; /* 타이틀 크기 축소 */
+  }
+}
+
+@media (max-width: 480px) {
+  .launch-date div p {
+    font-size: 30px; /* 타이머 숫자 크기 축소 */
+  }
+
+  .launch-date div {
+    flex-basis: 50px; /* 타이머 칸의 크기 축소 */
+  }
+
+  .content h1 {
+    font-size: 24px; /* 타이틀 크기 더 축소 */
+  }
+
+  .content button {
+    padding: 8px 15px;
+  }
+
+  .rocket {
+    width: 100px; /* 로켓 이미지 크기 더 축소 */
+  }
+
+  .halving-countdown {
+    font-size: 1.5em; /* 타이틀 크기 축소 */
   }
 }
