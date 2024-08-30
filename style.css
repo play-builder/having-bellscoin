@@ -206,6 +206,7 @@
 @media (max-width: 768px) {
   .launch-date div p {
     font-size: 40px; /* 타이머 숫자 크기 축소 */
+    margin-bottom: 8px; /* 숫자와 단위(Days, Hours 등) 사이에 margin 추가 */
   }
 
   .launch-date div {
@@ -239,6 +240,7 @@
 @media (max-width: 480px) {
   .launch-date div p {
     font-size: 30px; /* 타이머 숫자 크기 축소 */
+    margin-bottom: 8px; /* 숫자와 단위(Days, Hours 등) 사이에 margin 추가 */
   }
 
   .launch-date div {
