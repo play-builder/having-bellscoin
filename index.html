@@ -1,92 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bellscoin Countdown</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <div class="container">
-      <img src="images/bel-logo.png" class="logo" alt="Bellscoin Logo" />
-      <h1 class="halving-countdown">Bellscoin Countdown</h1>
-      <div class="content">
-        <h2>We are heading to <span style="color: #ff3753">Epoch 5</span></h2>
-        <div class="launch-date" id="countdown">
-          <div>
-            <p id="days" class="days">00</p>
-            <span>Days</span>
-          </div>
-          <div>
-            <p id="hours" class="hours">00</p>
-            <span>Hours</span>
-          </div>
-          <div>
-            <p id="minutes" class="minutes">00</p>
-            <span>Minutes</span>
-          </div>
-          <div>
-            <p id="seconds" class="seconds">00</p>
-            <span>Seconds</span>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bellscoin Countdown</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="container">
+    <img src="images/bel-logo.png" class="logo" alt="Bellscoin Logo">
+    <h1 class="halving-countdown">Bellscoin Countdown</h1>
+    <div class="content">
+      <h2>We are heading to <span style="color: #ff3753">Epoch 5</span></h2>
+      <div class="launch-date" id="countdown">
+        <div>
+          <p id="days" class="days">00</p>
+          <span>Days</span>
         </div>
-        <a href="https://bellscoin.com/" target="_blank">
-          <button type="button">
-            <span>Explore Bellscoin</span>
-            <img src="images/bellscoin.png" alt="Bellscoin Icon" />
-          </button>
-        </a>
+        <div>
+          <p id="hours" class="hours">00</p>
+          <span>Hours</span>
+        </div>
+        <div>
+          <p id="minutes" class="minutes">00</p>
+          <span>Minutes</span>
+        </div>
+        <div>
+          <p id="seconds" class="seconds">00</p>
+          <span>Seconds</span>
+        </div>
       </div>
-      <img src="images/rocket.png" class="rocket" alt="Rocket Image" />
+      <a href="https://bellscoin.com/" target="_blank">
+        <button type="button">
+          <span>Explore Bellscoin</span>
+          <img src="images/bellscoin.png" alt="Bellscoin Icon">
+        </button>
+      </a>
     </div>
+    <img src="images/rocket.png" class="rocket" alt="Rocket Image">
+  </div>
 
-    <script>
-      const targetBlock = 518400;
-      const currentBlock = 262378; // Current block height
-      const blockTime = 48 * 1000; // Average block time in milliseconds (48 seconds)
+  <script>
+    // Define the remaining time until Epoch 5
+    const daysRemaining = 177;
+    const hoursRemaining = 19;
+    const minutesRemaining = 10;
 
-      // Calculate remaining blocks to reach target height
-      const remainingBlocks = targetBlock - currentBlock;
+    // Calculate target time in milliseconds
+    const targetTime = Date.now() + 
+                      (daysRemaining * 24 * 60 * 60 * 1000) +
+                      (hoursRemaining * 60 * 60 * 1000) +
+                      (minutesRemaining * 60 * 1000);
 
-      // Calculate target time based on the current time and remaining blocks
-      const targetTime = Date.now() + remainingBlocks * blockTime;
+    function updateCountdown() {
+      const now = Date.now();
+      const distance = targetTime - now;
 
-      function updateCountdown() {
-        const now = Date.now();
-        const distance = targetTime - now;
-
-        if (distance < 0) {
-          clearInterval(countdownInterval);
-          document.getElementById("countdown").innerHTML = "Countdown Finished";
-          return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("days").textContent = String(days).padStart(
-          2,
-          "0"
-        );
-        document.getElementById("hours").textContent = String(hours).padStart(
-          2,
-          "0"
-        );
-        document.getElementById("minutes").textContent = String(
-          minutes
-        ).padStart(2, "0");
-        document.getElementById("seconds").textContent = String(
-          seconds
-        ).padStart(2, "0");
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').innerHTML = 'Countdown Finished';
+        return;
       }
 
-      // Update countdown every second
-      const countdownInterval = setInterval(updateCountdown, 1000);
-      updateCountdown(); // Initial call to display countdown immediately
-    </script>
-  </body>
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    // Update countdown every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initial call to display countdown immediately
+  </script>
+</body>
 </html>
+
